@@ -40,9 +40,11 @@ One of the key challenges in this project was working with datasets that spanned
 To answer the above questions I used the following sources to collect datasets for my analysis
 
 1) State-Level Real Estate Sales Data from 2012-2024.
+
 https://www.redfin.com/news/data-center/
 
 2) U.S. Census Population Estimates by State from 2020-2024.
+
 https://www.census.gov/data/tables/time-series/demo/popest/2020s-state-total.html
 
 ## Conclusion
