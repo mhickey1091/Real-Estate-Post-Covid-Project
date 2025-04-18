@@ -36,7 +36,6 @@ FROM year_ranks
 WHERE rank BETWEEN 1 AND 5;
 
 
-
 --------------------------------------------
 
 -- This is to get top 5 over 2022-2024
@@ -73,14 +72,14 @@ Limit 5
 
 --------------------------------------------
 
--- This is to get the top 5 with their average percentage growth from 2022-2024
+-- This is to get the top 5 with their average percentage growth from 2020-2024
 
 SELECT state, ROUND(AVG(sold_yoy_percent::integer),2) as avg
 FROM homes_sold
 WHERE state IN (WITH overall_rank AS (WITH year_ranks AS (SELECT *,
 	RANK() OVER(PARTITION BY year ORDER BY sold_yoy_percent DESC)
 FROM homes_sold
-WHERE sold_yoy_percent IS NOT NULL AND year BETWEEN 2022 AND 2024)
+WHERE sold_yoy_percent IS NOT NULL AND year BETWEEN 2020 AND 2024)
 --
 SELECT *
 FROM year_ranks)
@@ -89,7 +88,7 @@ SELECT state
 FROM overall_rank
 GROUP BY 1
 ORDER BY avg(rank)
-LIMIT 5) AND year BETWEEN 2022 AND 2024
+LIMIT 5) AND year BETWEEN 2020 AND 2024
 GROUP BY state
 ORDER BY avg desc;
 
@@ -101,7 +100,7 @@ FROM homes_sold
 WHERE state IN (WITH overall_rank AS (WITH year_ranks AS (SELECT *,
 	RANK() OVER(PARTITION BY year ORDER BY sold_yoy_percent DESC)
 FROM homes_sold
-WHERE sold_yoy_percent IS NOT NULL AND year BETWEEN 2022 AND 2024)
+WHERE sold_yoy_percent IS NOT NULL AND year BETWEEN 2020 AND 2024)
 --
 SELECT *
 FROM year_ranks)
@@ -110,7 +109,7 @@ SELECT state
 FROM overall_rank
 GROUP BY 1
 ORDER BY avg(rank) desc
-Limit 5) AND year BETWEEN 2022 AND 2024
+Limit 5) AND year BETWEEN 2020 AND 2024
 GROUP BY state
 ORDER BY avg;
 
@@ -123,7 +122,7 @@ FROM homes_sold
 WHERE state IN (WITH overall_rank AS (WITH year_ranks AS (SELECT *,
 	RANK() OVER(PARTITION BY year ORDER BY sold_yoy_percent DESC)
 FROM homes_sold
-WHERE sold_yoy_percent IS NOT NULL AND year BETWEEN 2022 AND 2024)
+WHERE sold_yoy_percent IS NOT NULL AND year BETWEEN 2020 AND 2024)
 --
 SELECT *
 FROM year_ranks)
@@ -132,7 +131,7 @@ SELECT state
 FROM overall_rank
 GROUP BY 1
 ORDER BY avg(rank)
-LIMIT 5) AND year BETWEEN 2022 AND 2024
+LIMIT 5) AND year BETWEEN 2020 AND 2024
 ORDER BY state;
 
 -- SANITY CHECK BOTTOM
@@ -142,7 +141,7 @@ FROM homes_sold
 WHERE state IN (WITH overall_rank AS (WITH year_ranks AS (SELECT *,
 	RANK() OVER(PARTITION BY year ORDER BY sold_yoy_percent DESC)
 FROM homes_sold
-WHERE sold_yoy_percent IS NOT NULL AND year BETWEEN 2022 AND 2024)
+WHERE sold_yoy_percent IS NOT NULL AND year BETWEEN 2020 AND 2024)
 --
 SELECT *
 FROM year_ranks)
@@ -151,5 +150,5 @@ SELECT state
 FROM overall_rank
 GROUP BY 1
 ORDER BY avg(rank) desc
-Limit 5) AND year BETWEEN 2022 AND 2024
+Limit 5) AND year BETWEEN 2020 AND 2024
 ORDER BY state;
