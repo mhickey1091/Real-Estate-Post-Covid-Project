@@ -20,7 +20,7 @@ With a strong interest in residential real estate, I've always paid close attent
 
 ## Questions:
 1) Which states had the most and least home sales per 100,000 people?
-2) Which states saw the sharpest year-over-year declines in sales?
+2) Which States Saw the Sharpest Decline in Home Sales After the 2021 Peak?
 3) Which markets were the most stable, and which showed the most volatility?
 4) Which markets had sales with the shortest Time on Market?
 
